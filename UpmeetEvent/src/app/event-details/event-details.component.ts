@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { EventsService } from '../events.service';
+import { Events } from '../events';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-details',
@@ -7,4 +10,17 @@ import { Component } from '@angular/core';
 })
 export class EventDetailsComponent {
 
+  viewDetails: boolean = false;
+
+
+  @Input() event: Events = {} as Events;
+
+  constructor(){ 
+
+  }
+   
+
+  switchViewDetails(){
+    this.viewDetails = ! this.viewDetails;
+  }
 }

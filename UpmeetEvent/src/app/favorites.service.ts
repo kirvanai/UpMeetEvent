@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
+import { User } from './user';
+import { Favorite } from './favorite';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
-<<<<<<< HEAD
   baseUrl: string = "https://localhost:7248/api/Favorites"
   constructor(private http:HttpClient) {}
 
@@ -18,18 +19,10 @@ export class FavoritesService {
       return this.http.get<User>(this.baseUrl+"/"+id);
     }
   
-  // AddFavorite(userId: number, eventId: number):Observable<void>{
-=======
-  baseUrl: string = "https://localhost:7248/api/Favorite"
-  constructor(private http:HttpClient) {}
-
-  // GetUser():Observable<Event[]>{
-  //   return this.http.get<User[]>(this.baseUrl);
-  // }
-  // AddUser(newUser: User):Observable<void>{
->>>>>>> ec0d430a9c2ab73b2e03b1cd64d4fd65ff6a6dd9
-  //   return this.http.post<void>(this.baseUrl, newUser);
-  // }
+  AddFavorite(newFavorite: Favorite):Observable<void>{
+    console.log(this.baseUrl + newFavorite)
+    return this.http.post<void>(this.baseUrl, newFavorite);
+  }
 
   // DeleteUser(id: number):Observable<void>{
   //   return this.http.delete<void>(this.baseUrl+"/"+id);
@@ -37,8 +30,4 @@ export class FavoritesService {
   // EditUser(id: number, editUser: Event):Observable<void>{
   //   return this.http.put<void>(this.baseUrl+"/"+id, editUser);
   // }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ec0d430a9c2ab73b2e03b1cd64d4fd65ff6a6dd9

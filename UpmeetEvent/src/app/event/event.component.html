@@ -1,14 +1,14 @@
-<div class="container text-center" style="padding-left: 150px; padding-right: 150px">
+<div class="container text-center">
+    
     <div class="container" *ngFor="let event of events; index as i">
+        <button btn btn-primary (click)="saveFavorite(event)">Favorite</button>
         <p>Event Name:</p>
         <p>{{event.name}}</p>
         <p>Date:</p>
         <p>{{event.date}}</p>
         <p>Time:</p>
-        <p>{{event.time}}</p>
-        <a href="">
-            <button class="detailsButton">Details</button>
-        </a>
+        <p>{{event.time}}</p>        
+        <app-event-details [event] = "event"></app-event-details>
     </div>
 </div>
 

@@ -22,7 +22,7 @@ namespace UpmeetEvent
                 builder =>
                 {
                     builder.WithOrigins(
-                                        "http://localhost:7248"
+                                        "http://localhost:4200"
                                         )
                                         .AllowAnyHeader()
                                         .AllowAnyMethod();

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../events.service';
 import { Events } from '../events';
+import { FavoritesService } from '../favorites.service';
+import { Favorite } from '../favorite';
 
 @Component({
   selector: 'app-event',
@@ -10,10 +12,12 @@ import { Events } from '../events';
 export class EventComponent implements OnInit {
 
   events: Events[] = [];
+  viewDetails: boolean = true;
+  favorite: Favorite = {} as Favorite;
+  
 
-  constructor(private eventsService: EventsService){ }
-  
-  
+  constructor(private eventsService: EventsService, private favoritesService: FavoritesService){ }
+      
   ngOnInit(): void {
     this.eventsService.GetEvents().subscribe(
       (eventsResult)=>{
@@ -23,6 +27,17 @@ export class EventComponent implements OnInit {
     )
   }
 
+  onClick(){
+    this.viewDetails = !this.viewDetails;
+    
+  }
 
+  saveFavorite(events: Events){
+    this.favorite.userId = 1;
+    this.favorite.eventId = events.id
+    console.log(this.favorite)
+    this.favoritesService.AddFavorite(this.favorite).subscribe
+    console.log("after")
+  }
 
 }

@@ -1,1 +1,9 @@
-<p>event-details works!</p>
+<button btn (click)="switchViewDetails()">Show Details</button>
+<div class="container text-center" style="padding-left: 150px; padding-right: 150px" *ngIf="viewDetails">
+    <div class="container">
+        <p>Location:</p>
+        <p>{{event.location}}</p>
+        <p>Description:</p>
+        <p>{{event.description}}</p>
+    </div>
+</div>
