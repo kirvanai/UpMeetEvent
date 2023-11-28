@@ -5,4 +5,5 @@ export interface Events {
     time: string;
     location: string;
     description: string;
+
 }

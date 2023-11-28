@@ -7,7 +7,6 @@ import { Events } from './events';
   providedIn: 'root'
 })
 export class EventsService {
-
   baseUrl: string = "https://localhost:7248/api/Events"
 
 
@@ -19,7 +18,7 @@ export class EventsService {
 
   AddEvent(newEvent: Event):Observable<void>{
     return this.http.post<void>(this.baseUrl, newEvent);
-  } 
+  }
 
   DeleteEvent(id: number):Observable<void>{
     return this.http.delete<void>(this.baseUrl+"/"+id);
@@ -27,4 +26,5 @@ export class EventsService {
   EditEvent(id: number, editEvent: Event):Observable<void>{
     return this.http.put<void>(this.baseUrl+"/"+id, editEvent);
   }
+
 }
