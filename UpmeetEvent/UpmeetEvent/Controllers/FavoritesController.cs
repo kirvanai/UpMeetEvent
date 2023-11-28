@@ -40,6 +40,8 @@ namespace UpmeetEvent.Controllers
               return NotFound();
           }
             var favorite = await _context.Favorites.FindAsync(id);
+            var mainEvent = await _context.Events.FindAsync(favorite.EventId);
+            var user = await _context.Users.FindAsync(favorite.UserId);
 
             if (favorite == null)
             {

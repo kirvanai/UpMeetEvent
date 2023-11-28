@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using UpmeetEvent.Models;
 
 namespace UpmeetEvent
@@ -27,6 +28,12 @@ namespace UpmeetEvent
                                         .AllowAnyMethod();
                 });
             });
+
+            builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+              {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+              });
 
 
             var app = builder.Build();
