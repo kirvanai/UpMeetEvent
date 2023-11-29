@@ -7,7 +7,7 @@ import { Events } from './events';
   providedIn: 'root'
 })
 export class EventsService {
-  baseUrl: string = "https://localhost:7248/api/Events"
+  baseUrl: string = "https://localhost:7090/api/Events"
 
 
   constructor(private http:HttpClient) { }

@@ -6,4 +6,5 @@ export interface Events {
     location: string;
     description: string;
     image: string;
+    favorite: boolean;
 }

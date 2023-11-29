@@ -7,14 +7,15 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { AddNewEventComponent } from './add-new-event/add-new-event.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
     EventDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    AddNewEventComponent
   ],
   imports: [
     BrowserModule,

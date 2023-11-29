@@ -1,9 +1,22 @@
-<button btn (click)="switchViewDetails()">Show Details</button>
+<button class="eventDetail appButton" (click) ="switchViewDetails()" *ngIf="!viewDetails; else hideDetails">Show Details</button>
+<ng-template #hideDetails>
+    <button class="eventDetail appButton" (click)="switchViewDetails()">Hide Details</button>
+</ng-template>
 <div class="container text-center" style="padding-left: 150px; padding-right: 150px" *ngIf="viewDetails">
     <div class="container">
-        <p>Location:</p>
-        <p>{{event.location}}</p>
-        <p>Description:</p>
-        <p>{{event.description}}</p>
+        <form>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col">
+                    <h1 style="font-size: 25px;">Location</h1>
+                    <p>{{event.location}}</p>
+                </div>                
+            </div> 
+            <div class="row" style="margin-top: 25px;">
+                <div class="col">
+                    <h1 style="font-size: 25px;">Description</h1>
+                    <p>{{event.description}}</p>
+                </div>      
+            </div>                      
+            </form>
     </div>
 </div>

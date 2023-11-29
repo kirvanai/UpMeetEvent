@@ -8,16 +8,16 @@ import { Favorite } from './favorite';
   providedIn: 'root'
 })
 export class FavoritesService {
-  baseUrl: string = "https://localhost:7248/api/Favorites"
+  baseUrl: string = "https://localhost:7090/api/Favorites"
   constructor(private http:HttpClient) {}
+    
+  getFavorites():Observable<Favorite[]>{
+    return this.http.get<Favorite[]>(this.baseUrl);
+  } 
 
-    getEvent(id: number):Observable<Event>{
-      return this.http.get<Event>(this.baseUrl+"/"+id);
-    }
-
-    getUser(id: number):Observable<User>{
-      return this.http.get<User>(this.baseUrl+"/"+id);
-    }
+  getUser(id: number):Observable<User>{
+    return this.http.get<User>(this.baseUrl+"/"+id);
+  }
   
   AddFavorite(newFavorite: Favorite):Observable<void>{
     console.log(this.baseUrl + newFavorite)

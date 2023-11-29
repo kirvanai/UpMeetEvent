@@ -12,8 +12,10 @@ import { Favorite } from '../favorite';
 export class EventComponent implements OnInit {
 
   events: Events[] = [];
+  favorites: Favorite[] = [];
   viewDetails: boolean = true;
-  favorite: Favorite = {} as Favorite;
+  newFavorite: Favorite = {} as Favorite;
+  favorite: boolean = true;
   
 
   constructor(private eventsService: EventsService, private favoritesService: FavoritesService){ }
@@ -22,9 +24,22 @@ export class EventComponent implements OnInit {
     this.eventsService.GetEvents().subscribe(
       (eventsResult)=>{
         this.events = eventsResult;        
-        console.log(this.events);
+        
+        this.favoritesService.getFavorites().subscribe(
+          (favoritesResult)=>{
+            this.favorites = favoritesResult;        
+            console.log(this.favorites);
+            this.favorites.forEach( favorite => {
+              let event = this.events.find(e => e.id === favorite.eventId)
+              if (event != undefined){
+                event.favorite = true;
+              }
+            })
+          }      
+        )
       }      
     )
+
   }
 
   onClick(){
@@ -32,12 +47,42 @@ export class EventComponent implements OnInit {
     
   }
 
+  changeFavorite(){
+    // if (addFavorite){
+    //   // this.newFavorite.userId = eventToFavorite.;
+    //   this.newFavorite.eventId = eventToFavorite.id
+  
+    //   this.favoritesService.AddFavorite(this.newFavorite).subscribe( 
+    //     () => {
+    //     this.eventsService.GetEvents().subscribe(
+    //       (eventsResult)=>{
+    //         this.events = eventsResult;        
+    //         console.log(this.events);
+    //       }      
+    //     )
+    //     }
+    //   )
+    // }
+    // else{
+
+    // }
+  }
+
   saveFavorite(events: Events){
-    this.favorite.userId = 1;
-    this.favorite.eventId = events.id
-    console.log(this.favorite)
-    this.favoritesService.AddFavorite(this.favorite).subscribe
-    console.log("after")
+    this.newFavorite.userId = 1;
+    this.newFavorite.eventId = events.id
+
+    this.favoritesService.AddFavorite(this.newFavorite).subscribe( 
+      () => {
+      this.eventsService.GetEvents().subscribe(
+        (eventsResult)=>{
+          this.events = eventsResult;        
+          console.log(this.events);
+        }      
+      )
+      }
+    )
+
   }
 
 }

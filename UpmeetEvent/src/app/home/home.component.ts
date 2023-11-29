@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  viewing: string = "events"
+
+  setViewing(showView: string){   
+    this.viewing = showView
+  }
+
 }

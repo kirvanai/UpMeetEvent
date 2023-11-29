@@ -1,14 +1,25 @@
-<div class="container text-center">
-    
-    <div class="container" *ngFor="let event of events; index as i">
-        <button btn btn-primary (click)="saveFavorite(event)">Favorite</button>
-        <p>Event Name:</p>
-        <p>{{event.name}}</p>
-        <p>Date:</p>
-        <p>{{event.date}}</p>
-        <p>Time:</p>
-        <p>{{event.time}}</p>        
-        <app-event-details [event] = "event"></app-event-details>
-    </div>
-</div>
+<div class="eventContainer">
+    <div *ngFor="let event of events; index as i">
+        <section class="eventBackground">
+            <div class="container event">
 
+                <div class="container container-info">
+                    <div class="wrapper">
+                        <div *ngIf="event.image != ''; else noImage">
+                            <img src="/assets/img/{{event.image}}" class="banner-image"/>
+                        </div>
+                        <ng-template #noImage>
+                            <p></p>
+                        </ng-template>
+                            <h1 *ngIf="!event.favorite else notFavorite"> {{event.name}} <i class="fa-regular fa-bookmark" (click)="changeFavorite()"></i></h1>
+                        <ng-template #notFavorite>
+                            <h1 *ngIf="event.favorite else notFavorite"> {{event.name}} <i class="fa-solid fa-bookmark" style="color: rgba(76, 216, 255, 0.8);" (click)="changeFavorite()"></i></h1>
+                        </ng-template>
+                        <p>{{event.date}} {{event.time}}</p>
+                     </div>
+                    <app-event-details [event] = "event"></app-event-details>
+                </div>                
+            </div>
+        </section>
+    </div>    
+</div>
