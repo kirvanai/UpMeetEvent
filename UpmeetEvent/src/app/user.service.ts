@@ -8,8 +8,8 @@ import { Secret } from './secret';
   providedIn: 'root'
 })
 export class UserService {
-  key: Secret = new Secret();
-  baseUrl: string = this.key.baseUrl;
+  key : Secret = new Secret();
+  baseUrl : string = this.key.userUrl;
   constructor(private http:HttpClient) {}
 
   GetUser():Observable<User[]>{
