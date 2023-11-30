@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UpmeetEvent.Models;
+namespace UpMeetEventBackend.Models;
 
 public partial class User
 {
