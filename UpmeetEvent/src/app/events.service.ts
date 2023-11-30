@@ -10,6 +10,7 @@ import { Secret } from './secret';
 export class EventsService {
   key : Secret = new Secret();
   baseUrl : string = this.key.eventUrl;
+
   constructor(private http:HttpClient) { }
 
   GetEvents():Observable<Events[]>{

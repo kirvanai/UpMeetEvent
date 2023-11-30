@@ -1,7 +1,7 @@
-using System.Text.Json.Serialization;
-using UpmeetEvent.Models;
 
-namespace UpmeetEvent
+using UpMeetEventBackend.Models;
+
+namespace UpMeetEventBackend
 {
     public class Program
     {
@@ -10,12 +10,12 @@ namespace UpmeetEvent
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<EventsContext>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<EventsContext>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngularOrigins",
@@ -29,14 +29,8 @@ namespace UpmeetEvent
                 });
             });
 
-            builder.Services.AddControllers()
-            .AddJsonOptions(options =>
-              {
-                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-              });
-
-
             var app = builder.Build();
+
             app.UseCors("AllowAngularOrigins");
 
             // Configure the HTTP request pipeline.

@@ -11,8 +11,8 @@ import { Secret } from './secret';
 export class FavoritesService {
   key : Secret = new Secret();
   baseUrl : string = this.key.favoriteUrl;
-  constructor(private http:HttpClient) {}
-    
+  constructor(private http:HttpClient) {} 
+  
   getFavorites():Observable<Favorite[]>{
     return this.http.get<Favorite[]>(this.baseUrl);
   } 

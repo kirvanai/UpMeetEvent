@@ -110,14 +110,14 @@ h1{
   font-family: 'Righteous', sans-serif;
   color: rgba(255,255,255,0.98);
   text-transform: uppercase;
-  font-size: 2.4rem;
+  font-size: 25px;
 }
 
 p {
   color: #fff;
   font-family: 'Lato', sans-serif;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 20px;
   line-height: 150%;
   letter-spacing: 2px;
   text-transform: uppercase;

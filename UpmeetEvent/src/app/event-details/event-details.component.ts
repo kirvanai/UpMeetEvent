@@ -8,6 +8,9 @@ import { Events } from '../events';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent {
+changeFavorite() {
+throw new Error('Method not implemented.');
+}
 
   viewDetails: boolean = false;
 
