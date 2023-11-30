@@ -1,7 +1,25 @@
-<button class="eventDetail appButton" (click) ="switchViewDetails()" *ngIf="!viewDetails; else hideDetails">Show Details</button>
-<ng-template #hideDetails>
-    <button class="eventDetail appButton" (click)="switchViewDetails()">Hide Details</button>
-</ng-template>
+<div class="container text-center" style="padding-left: 150px; padding-right: 150px" *ngIf="viewDetails">
+    <div class="container">
+      <!-- Move the "Show Details" button and Bootstrap bookmark icons to the same container -->
+      <button class="eventDetail appButton" (click)="switchViewDetails()">
+        {{ !viewDetails ? 'Show Details' : 'Hide Details' }}
+      </button>
+  
+      <!-- Bootstrap bookmark icons -->
+      <i
+        class="fa-regular fa-bookmark"
+        *ngIf="!event.favorite; else notFavorite"
+        (click)="changeFavorite()"
+        style="font-size: 2rem; cursor: pointer;"
+      ></i>
+      <ng-template #notFavorite>
+        <i
+          class="fa-solid fa-bookmark"
+          *ngIf="event.favorite"
+          (click)="changeFavorite()"
+          style="font-size: 2rem; color: rgba(76, 216, 255, 0.8); cursor: pointer;"
+        ></i>
+      </ng-template>
 <div class="container text-center" style="padding-left: 150px; padding-right: 150px" *ngIf="viewDetails">
     <div class="container">
         <form>

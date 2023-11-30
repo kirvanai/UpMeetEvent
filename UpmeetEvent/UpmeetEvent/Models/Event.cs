@@ -17,5 +17,7 @@ public partial class Event
 
     public string? Description { get; set; }
 
+    public string? Image { get; set; }
+
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
 }
