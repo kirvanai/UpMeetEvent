@@ -8,7 +8,7 @@ import { Favorite } from './favorite';
   providedIn: 'root'
 })
 export class FavoritesService {
-  baseUrl: string = "https://localhost:7090/api/Favorites"
+  baseUrl: string = "https://localhost:7248/api/Favorites"
   constructor(private http:HttpClient) {}
     
   getFavorites():Observable<Favorite[]>{

@@ -23,13 +23,13 @@ public partial class EventsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=BERTHA;Database=Events;Trusted_Connection=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=ALEX-2020BUILD;Database=Events;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Events__3213E83F39A73A07");
+            entity.HasKey(e => e.Id).HasName("PK__Events__3213E83F03D149AC");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Date)
@@ -38,6 +38,9 @@ public partial class EventsContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .HasColumnName("description");
+            entity.Property(e => e.Image)
+                .HasMaxLength(1000)
+                .HasColumnName("image");
             entity.Property(e => e.Location)
                 .HasMaxLength(80)
                 .HasColumnName("location");
@@ -51,7 +54,7 @@ public partial class EventsContext : DbContext
 
         modelBuilder.Entity<Favorite>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83F8691B913");
+            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83FDFF74BD2");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.EventId).HasColumnName("eventID");
@@ -59,16 +62,16 @@ public partial class EventsContext : DbContext
 
             entity.HasOne(d => d.Event).WithMany(p => p.Favorites)
                 .HasForeignKey(d => d.EventId)
-                .HasConstraintName("FK__Favorites__event__4222D4EF");
+                .HasConstraintName("FK__Favorites__event__3B75D760");
 
             entity.HasOne(d => d.User).WithMany(p => p.Favorites)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Favorites__userI__4316F928");
+                .HasConstraintName("FK__Favorites__userI__3C69FB99");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F0B608723");
+            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F6348E32A");
 
             entity.ToTable("User");
 
