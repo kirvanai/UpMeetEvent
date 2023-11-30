@@ -19,15 +19,13 @@ public partial class EventsContext : DbContext
 
     public virtual DbSet<Favorite> Favorites { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=ALEX-2020BUILD;Database=Events;Trusted_Connection=True;TrustServerCertificate=True");
+  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer(Secret.ConnectionString);
-
         //=> optionsBuilder.UseSqlServer("Server=Bertha;Database=Events;Trusted_Connection=True;TrustServerCertificate=True");
+    public virtual DbSet<User> Users { get; set; }
 
+  
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -62,10 +60,7 @@ public partial class EventsContext : DbContext
 
         modelBuilder.Entity<Favorite>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83FDFF74BD2");
-
-            //entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83FB47764F8");
-
+            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83FFD39E840");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.EventId).HasColumnName("eventID");
@@ -73,28 +68,16 @@ public partial class EventsContext : DbContext
 
             entity.HasOne(d => d.Event).WithMany(p => p.Favorites)
                 .HasForeignKey(d => d.EventId)
-
                 .HasConstraintName("FK__Favorites__event__3B75D760");
 
             entity.HasOne(d => d.User).WithMany(p => p.Favorites)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Favorites__userI__3C69FB99");
-
-            //    .HasConstraintName("FK__Favorites__event__5070F446");
-
-            //entity.HasOne(d => d.User).WithMany(p => p.Favorites)
-            //    .HasForeignKey(d => d.UserId)
-            //    .HasConstraintName("FK__Favorites__userI__5165187F");
-
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-
-            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F6348E32A");
-
-            //entity.HasKey(e => e.Id).HasName("PK__User__3213E83FFC997EF2");
-
+            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F1136CB7C");
 
             entity.ToTable("User");
 
