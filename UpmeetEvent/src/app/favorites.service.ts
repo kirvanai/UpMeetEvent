@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Favorite } from './favorite';
+import { Secret } from './secret';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
-  baseUrl: string = "https://localhost:7248/api/Favorites"
+  key: Secret = new Secret();
+  baseUrl: string = this.key.favoritesUrl;
   constructor(private http:HttpClient) {}
     
   getFavorites():Observable<Favorite[]>{

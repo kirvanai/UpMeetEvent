@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UpmeetEvent.Models;
+using UpMeetEventBackend.Models;
 
-namespace UpmeetEvent.Controllers
+namespace UpMeetEventBackend.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
