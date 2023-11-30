@@ -25,5 +25,4 @@ export class UserService {
   EditUser(id: number, editUser: Event):Observable<void>{
     return this.http.put<void>(this.baseUrl+"/"+id, editUser);
   }
-
 }
