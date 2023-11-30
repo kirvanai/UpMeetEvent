@@ -9,7 +9,7 @@ import { Secret } from './secret';
 })
 export class EventsService {
   key : Secret = new Secret();
-  baseUrl : string = this.key.eventUrl;
+  baseUrl : string = this.key.eventsurl;
 
   constructor(private http:HttpClient) { }
 

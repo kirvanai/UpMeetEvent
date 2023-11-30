@@ -9,7 +9,7 @@ import { Secret } from './secret';
 })
 export class UserService {
   key : Secret = new Secret();
-  baseUrl : string = this.key.userUrl;
+  baseUrl : string = this.key.userurl;
   constructor(private http:HttpClient) {}
 
   GetUser():Observable<User[]>{
