@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UpmeetEvent.Models;
+using UpMeetEventBackend.Models;
 
-namespace UpmeetEvent.Controllers
+namespace UpMeetEventBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -40,8 +40,6 @@ namespace UpmeetEvent.Controllers
               return NotFound();
           }
             var favorite = await _context.Favorites.FindAsync(id);
-            var mainEvent = await _context.Events.FindAsync(favorite.EventId);
-            var user = await _context.Users.FindAsync(favorite.UserId);
 
             if (favorite == null)
             {
