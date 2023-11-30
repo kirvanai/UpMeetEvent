@@ -26,7 +26,9 @@
               <p class="iconText hidden-mobile">Events</p>
               <i class="fa-brands fa-gratipay icons" aria-hidden="true" style="color:red" (click)="setViewing('favorites')"></i>
               <p class="iconText hidden-mobile">Favorites</p>              
+              <a [routerLink]="['/addNewEvent']">
               <i class="fa-regular fa-calendar-plus" aria-hidden="true" style="color:red"></i>
+              </a>
           </div>
           <div class="col postContainer" style="padding-bottom: 25px; flex-direction: column; flex-grow: 10; overflow-y: auto; height: 100vh; background-color: darkgray;">
             <app-event *ngIf="viewing === 'events'"></app-event>

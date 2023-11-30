@@ -1,1 +1,14 @@
-<p>add-new-event works!</p>
+<form (ngSubmit)="addEvent()">
+<p>Name:</p>
+<input type="text" name="name" [(ngModel)]="newEvent.name">
+<p>Date:</p>
+<input type="text" name="date" [(ngModel)]="newEvent.date">
+<p>Time:</p>
+<input type="text" name="time" [(ngModel)]="newEvent.time">
+<p>Location:</p>
+<input type="text" name="location" [(ngModel)]="newEvent.location">
+<p>Description</p>
+<input type="text" name="description" [(ngModel)]="newEvent.description">
+<p>Image:</p>
+<input type="text" name="image" [(ngModel)]="newEvent.image">
+</form>

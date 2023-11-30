@@ -24,7 +24,7 @@ export class EventComponent implements OnInit {
     this.eventsService.GetEvents().subscribe(
       (eventsResult)=>{
         this.events = eventsResult;        
-        
+        console.log(this.events)
         this.favoritesService.getFavorites().subscribe(
           (favoritesResult)=>{
             this.favorites = favoritesResult;        
