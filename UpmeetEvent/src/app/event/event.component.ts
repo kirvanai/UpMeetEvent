@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EventsService } from '../events.service';
 import { Events } from '../events';
 import { FavoritesService } from '../favorites.service';
@@ -10,7 +10,6 @@ import { Favorite } from '../favorite';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-
   events: Events[] = [];
   favorites: Favorite[] = [];
   viewDetails: boolean = true;
@@ -25,7 +24,7 @@ export class EventComponent implements OnInit {
       (eventsResult)=>{
         this.events = eventsResult;        
         console.log(this.events)
-        this.favoritesService.getFavorites().subscribe(
+        this.favoritesService.getFavorites(1).subscribe(
           (favoritesResult)=>{
             this.favorites = favoritesResult;        
             console.log(this.favorites);
@@ -45,44 +44,6 @@ export class EventComponent implements OnInit {
   onClick(){
     this.viewDetails = !this.viewDetails;
     
-  }
-
-  changeFavorite(){
-    // if (addFavorite){
-    //   // this.newFavorite.userId = eventToFavorite.;
-    //   this.newFavorite.eventId = eventToFavorite.id
-  
-    //   this.favoritesService.AddFavorite(this.newFavorite).subscribe( 
-    //     () => {
-    //     this.eventsService.GetEvents().subscribe(
-    //       (eventsResult)=>{
-    //         this.events = eventsResult;        
-    //         console.log(this.events);
-    //       }      
-    //     )
-    //     }
-    //   )
-    // }
-    // else{
-
-    // }
-  }
-
-  saveFavorite(events: Events){
-    this.newFavorite.userId = 1;
-    this.newFavorite.eventId = events.id
-
-    this.favoritesService.AddFavorite(this.newFavorite).subscribe( 
-      () => {
-      this.eventsService.GetEvents().subscribe(
-        (eventsResult)=>{
-          this.events = eventsResult;        
-          console.log(this.events);
-        }      
-      )
-      }
-    )
-
   }
 
 }

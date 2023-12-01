@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,46 +14,49 @@ namespace UpmeetEvent.Controllers
     public class FavoritesController : ControllerBase
     {
         private readonly EventsContext _context;
+        
 
         public FavoritesController(EventsContext context)
         {
             _context = context;
         }
 
-        // GET: api/Favorites
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Favorite>>> GetFavorites()
+    // GET: api/Favorites
+    [HttpGet("{userId}")]
+    public async Task<ActionResult<IEnumerable<Favorite>>> GetFavorites(int userId)
         {
           if (_context.Favorites == null)
           {
               return NotFound();
           }
-            return await _context.Favorites.ToListAsync();
+
+            return _context.Favorites.Where(f => f.UserId == userId).ToList();
+            
         }
 
-        // GET: api/Favorites/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Favorite>> GetFavorite(int id)
-        {
-          if (_context.Favorites == null)
-          {
-              return NotFound();
-          }
-            var favorite = await _context.Favorites.FindAsync(id);
-            var mainEvent = await _context.Events.FindAsync(favorite.EventId);
-            var user = await _context.Users.FindAsync(favorite.UserId);
+    // GET: api/Favorites/5
+    //[HttpGet("{id}")]
+    //public async Task<ActionResult<Favorite>> GetFavorite(int id)
+    //{
+    //  if (_context.Favorites == null)
+    //  {
+    //    return NotFound();
+    //  }
+    //  var favorite = await _context.Favorites.FindAsync(id);
+    //  var mainEvent = await _context.Events.FindAsync(favorite.EventId);
+    //  var user = await _context.Users.FindAsync(favorite.UserId);
 
-            if (favorite == null)
-            {
-                return NotFound();
-            }
+    //  if (favorite == null)
+    //  {
+    //    return NotFound();
+    //  }
 
-            return favorite;
-        }
+    //  return favorite;
+    //}
 
-        // PUT: api/Favorites/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+    // PUT: api/Favorites/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
         public async Task<IActionResult> PutFavorite(int id, Favorite favorite)
         {
             if (id != favorite.Id)

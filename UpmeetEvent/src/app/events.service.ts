@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Events } from './events';
-import { Secret } from './secret';
+import { Secret } from './Secret';
 
 @Injectable({
   providedIn: 'root'

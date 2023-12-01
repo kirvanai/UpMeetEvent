@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Favorite } from './favorite';
-import { Secret } from './secret';
+import { Secret } from './Secret';
+import { Events } from './events';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class FavoritesService {
   baseUrl : string = this.key.favoriteUrl;
   constructor(private http:HttpClient) {}
     
-  getFavorites():Observable<Favorite[]>{
-    return this.http.get<Favorite[]>(this.baseUrl);
+  getFavorites(userId: number):Observable<Favorite[]>{
+    return this.http.get<Favorite[]>(this.baseUrl+"/"+userId);
   } 
 
   getUser(id: number):Observable<User>{
@@ -26,10 +27,8 @@ export class FavoritesService {
     return this.http.post<void>(this.baseUrl, newFavorite);
   }
 
-  // DeleteUser(id: number):Observable<void>{
-  //   return this.http.delete<void>(this.baseUrl+"/"+id);
-  // }
-  // EditUser(id: number, editUser: Event):Observable<void>{
-  //   return this.http.put<void>(this.baseUrl+"/"+id, editUser);
-  // }
+  DeleteFavorite(deleteFavorite: Events):Observable<void>{
+    return this.http.delete<void>(this.baseUrl+"/"+ deleteFavorite.id);
+  }
+
 }

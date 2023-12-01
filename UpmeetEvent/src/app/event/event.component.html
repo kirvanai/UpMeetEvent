@@ -11,10 +11,10 @@
                         <ng-template #noImage>
                             <p></p>
                         </ng-template>
-                            <h1 *ngIf="!event.favorite else notFavorite"> {{event.name}} <i class="fa-regular fa-bookmark" (click)="changeFavorite()"></i></h1>
-                        <ng-template #notFavorite>
-                            <h1 *ngIf="event.favorite else notFavorite"> {{event.name}} <i class="fa-solid fa-bookmark" style="color: rgba(76, 216, 255, 0.8);" (click)="changeFavorite()"></i></h1>
-                        </ng-template>
+                        <h1 *ngIf="!event.favorite else notFavorite"> {{event.name}}</h1>
+                    <ng-template #notFavorite>
+                        <h1 *ngIf="event.favorite else notFavorite"> {{event.name}}</h1>
+                    </ng-template>
                         <p>{{event.date}} {{event.time}}</p>
                      </div>
                     <app-event-details [event] = "event"></app-event-details>
@@ -23,3 +23,8 @@
         </section>
     </div>    
 </div>
+
+
+
+
+
