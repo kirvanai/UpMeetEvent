@@ -27,7 +27,7 @@ export class FavoritesService {
     return this.http.post<void>(this.baseUrl, newFavorite);
   }
 
-  DeleteFavorite(deleteFavorite: Events):Observable<void>{
+  DeleteFavorite(deleteFavorite: Favorite):Observable<void>{
     return this.http.delete<void>(this.baseUrl+"/"+ deleteFavorite.id);
   }
 

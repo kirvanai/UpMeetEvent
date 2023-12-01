@@ -88,7 +88,7 @@ namespace UpmeetEvent.Controllers
         // POST: api/Favorites
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Favorite>> PostFavorite(Favorite favorite)
+        public async Task<ActionResult> PostFavorite(Favorite favorite)
         {
           if (_context.Favorites == null)
           {
@@ -97,8 +97,8 @@ namespace UpmeetEvent.Controllers
             _context.Favorites.Add(favorite);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFavorite", new { id = favorite.Id }, favorite);
-        }
+            return NoContent();
+    }
 
         // DELETE: api/Favorites/5
         [HttpDelete("{id}")]

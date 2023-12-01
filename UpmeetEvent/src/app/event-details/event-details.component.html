@@ -5,14 +5,14 @@
     <i
       class="fa-regular fa-bookmark"
       *ngIf="!event.favorite; else notFavorite"
-      (click)="changeFavorite(event)"
+      (click)="changeFavorite()"
       style="font-size: 2rem; cursor: pointer; margin-left: 10px;"
     ></i>
     <ng-template #notFavorite>
       <i
         class="fa-solid fa-bookmark"
         *ngIf="event.favorite"
-        (click)="changeFavorite(event)"
+        (click)="changeFavorite()"
         style="font-size: 2rem; color: rgba(76, 216, 255, 0.8); cursor: pointer; margin-left: 10px;"
       ></i>
     </ng-template>

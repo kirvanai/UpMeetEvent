@@ -29,19 +29,26 @@ throw new Error('Method not implemented.');
 
   }
 
-  changeFavorite(eventFavorite: Events ){
-  
-    if (eventFavorite.favorite){
-      this.favoritesService.DeleteFavorite(eventFavorite).subscribe(() => {this.favoritesService.getFavorites(1).subscribe(
+  changeFavorite(){
+    this.event.favorite = !this.event.favorite;
+    
+    this.newFavorite.userId=1;
+    this.newFavorite.eventId = this.event.id;
+    
+    if (this.event.favorite){
+      this.favoritesService.DeleteFavorite(this.newFavorite).subscribe(() => {this.favoritesService.getFavorites(1).subscribe(
         (favoritesResult)=>{this.favorites = favoritesResult;})})
     }
     else{
       console.log(this.favorites)
       this.newFavorite.userId = 1;
-      this.newFavorite.eventId = eventFavorite.id;
-      this.favoritesService.AddFavorite(this.newFavorite).subscribe(() => {})
+      this.newFavorite.eventId = this.event.id;
+      this.favoritesService.AddFavorite(this.newFavorite).subscribe(() => {this.favoritesService.getFavorites(1).subscribe(
+        (favoritesResult)=>{this.favorites = favoritesResult; this.newFavorite = this.favorites[this.favorites.length-1];})})
+        
         console.log(this.favorites);
     }
+    
   }
 
    
