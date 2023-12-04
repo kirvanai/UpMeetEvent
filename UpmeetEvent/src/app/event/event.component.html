@@ -1,5 +1,5 @@
 <div class="eventContainer">
-    <div *ngFor="let event of events; index as i">
+    <div *ngFor="let event of displayList; index as i">
         <section class="eventBackground">
             <div class="container event">
 
@@ -11,10 +11,7 @@
                         <ng-template #noImage>
                             <p></p>
                         </ng-template>
-                        <h1 *ngIf="!event.favorite else notFavorite"> {{event.name}}</h1>
-                    <ng-template #notFavorite>
-                        <h1 *ngIf="event.favorite else notFavorite"> {{event.name}}</h1>
-                    </ng-template>
+                        <h1> {{event.name}}</h1>
                         <p>{{event.date}} {{event.time}}</p>
                      </div>
                     <app-event-details [event] = "event"></app-event-details>

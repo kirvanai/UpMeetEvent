@@ -22,13 +22,13 @@ export class FavoritesService {
     return this.http.get<User>(this.baseUrl+"/"+id);
   }
   
-  AddFavorite(newFavorite: Favorite):Observable<void>{
+  AddFavorite(newFavorite: Favorite):Observable<Favorite>{
     console.log(this.baseUrl + newFavorite)
-    return this.http.post<void>(this.baseUrl, newFavorite);
+    return this.http.post<Favorite>(this.baseUrl, newFavorite);
   }
 
-  DeleteFavorite(deleteFavorite: Favorite):Observable<void>{
-    return this.http.delete<void>(this.baseUrl+"/"+ deleteFavorite.id);
+  DeleteFavorite(favoriteId : number):Observable<void>{
+    return this.http.delete<void>(this.baseUrl+"/"+ favoriteId);
   }
 
 }

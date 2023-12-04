@@ -7,4 +7,5 @@ export interface Events {
     description: string;
     image: string;
     favorite: boolean;
+    favoriteId : number;
 }

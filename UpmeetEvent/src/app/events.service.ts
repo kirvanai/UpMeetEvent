@@ -8,6 +8,7 @@ import { Secret } from './Secret';
   providedIn: 'root'
 })
 export class EventsService {
+  events: Events[] = [];
   key : Secret = new Secret();
   baseUrl : string = this.key.eventUrl;
   constructor(private http:HttpClient) { }
